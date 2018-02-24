@@ -1,25 +1,24 @@
 function Mostrar()
 {
-
-	var contador=0;
 	var positivo=0;
 	var negativo=1;
-	var respuesta='si';
+	var respuesta=1;
 	var numero;
 	var acumulador=0;
-
-	while(respuesta == "si" )
+	
+	while(respuesta == 1 )
 		{
-		numero =parseInt (prompt ("ingresar numeros") );
-		acumulador=acumulador + numero ;
-		contador++;
-		respuesta=prompt("¿Continuar?");
+		numero = parseInt (prompt ("ingresar numeros") );
 
-		if (numero > 0)
-		{
-			positivo = numero + contador
-
-		}
+		if (numero >= 0)
+			{
+			positivo = numero + positivo;
+			}
+		else
+			{
+			negativo=negativo * numero;
+			}
+		respuesta=confirm("¿Continuar?");
 		}
 
 
