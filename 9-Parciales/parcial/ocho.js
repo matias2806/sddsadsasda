@@ -29,22 +29,28 @@ function Mostrar()
     var edad;
     var edadMin;
     var sexoMin;
+    var acumuladorDeEdad=0;
+    var contadorDeAprovados=0;
+    var promedioAprovados;
+    var cantidadNotasPares=0;
+    var cantidadNotasImpares=0;
+
     while (respuesta != "no")
     {
         nombre = prompt ("ingrese su nombre");  
-        nota = parseInt ( prompt ("ingrese la nota") );
+        nota = parseInt ( prompt ("ingrese la nota (de 0 a 10)") );
         
         while(nota < 0 || nota > 10)
         {
-            nota = parseInt ( prompt ("ingrese la nota") );
+            nota = parseInt ( prompt ("ingrese la nota nuevamente") );
         } 
         acumuladorNotas = acumuladorNotas + nota;      
         contadorAlumnos++;
     
-        sexo = prompt ("ingrese su sexo");
+        sexo = prompt ("ingrese su sexo (m o f)");
         while(sexo != "m" && sexo != "f")
         {
-            sexo = prompt ("ingrese su sexo");
+            sexo = prompt ("ingrese su sexo nuevamente ");
         }    
         if(sexo == "m")
         {
@@ -73,11 +79,11 @@ function Mostrar()
         }
     
     //8 el sexo del menor edad
-    edad = prompt("Cuantos años tenes?");
+    edad =parseInt (prompt("Cuantos años tenes?") );
 
     while (edad<18 || edad>100)
         {
-        edad = prompt("Reingrese la edad");
+        edad = prompt("Reingrese la edad(entre 18 y 100)");
         }
         if (contadorAlumnos ==1)
             {
@@ -89,9 +95,28 @@ function Mostrar()
             sexoMin = sexo;
             }
      respuesta = prompt ("no para salir");
+
+    //Promedio de las edades de los aprovados!
+            if(nota >= 4)
+            {
+            acumuladorDeEdad = edad + acumuladorDeEdad;
+            contadorDeAprovados++;
+            }
+    //cantidad de notas pares e impares
+            if(nota % 2 == 0)
+            {
+            cantidadNotasPares++;
+            }
+            else{
+            cantidadNotasImpares++;
+            }
+            
+
     }
     promedio = acumuladorNotas / contadorAlumnos;
     acumuladorNotasMujeres= acumuladorNotasMujeres / mujeres;
+    promedioAprovados= acumuladorDeEdad/contadorDeAprovados;
+
 
     document.write ("Cantidad de alumnos "+ contadorAlumnos);
     document.write ("<br> Promedio de notas "+ promedio);
@@ -101,6 +126,9 @@ function Mostrar()
     document.write ("<br> Nombre de la nota maxima  " +notaMax);
     document.write ("<br> Promedio notas de mujeres  " +acumuladorNotasMujeres);
     document.write ("<br> Sexo del de menor edad  " +sexoMin);
+    document.write ("<br> El promedio de la edad de los aprovados " +promedioAprovados);
+    document.write ("<br> La cantidad de notas pares son : " +cantidadNotasPares);
+    document.write ("<br> La cantidad de notas impares son : " +cantidadNotasImpares);
 }
 
 
