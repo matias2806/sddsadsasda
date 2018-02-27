@@ -67,7 +67,7 @@ function Mostrar()
         {
         varonesDesaprobados++;
         }
-       //este es el6
+       //nombre de la mejor nota
         if (contadorAlumnos == 1)
         {
         maximo = nota;
